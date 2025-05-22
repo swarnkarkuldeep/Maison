@@ -1,6 +1,11 @@
-const fs = require('fs');
-const path = require('path');
-const sharp = require('sharp');
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+import fs from 'fs';
+import path from 'path';
+import sharp from 'sharp';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 const inputSvg = path.join(__dirname, '../public/favicon.svg');
 const outputDir = path.join(__dirname, '../public');

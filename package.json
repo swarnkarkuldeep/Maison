@@ -10,7 +10,7 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "clean": "node scripts/clean-cache.js",
-    "generate:icons": "node scripts/generate-favicon.js",
+    "generate:icons": "node scripts/generate-favicon.mjs",
     "postinstall": "npm run generate:icons"
   },
   "dependencies": {
