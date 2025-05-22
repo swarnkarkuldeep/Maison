@@ -108,14 +108,16 @@ export default function Header() {
             
             {/* Placeholder to ensure correct spacing */}
             <div className="hidden md:block invisible">
-              <NavigationMenuList>
-                <NavigationMenuItem>
-                  <span className="text-sm px-4 py-2">PLACEHOLDER</span>
-                </NavigationMenuItem>
-                <NavigationMenuItem>
-                  <span className="text-sm px-4 py-2">PLACEHOLDER</span>
-                </NavigationMenuItem>
-              </NavigationMenuList>
+              <NavigationMenu>
+                <NavigationMenuList>
+                  <NavigationMenuItem>
+                    <span className="text-sm px-4 py-2">PLACEHOLDER</span>
+                  </NavigationMenuItem>
+                  <NavigationMenuItem>
+                    <span className="text-sm px-4 py-2">PLACEHOLDER</span>
+                  </NavigationMenuItem>
+                </NavigationMenuList>
+              </NavigationMenu>
             </div>
             
             {/* Right navigation on desktop */}
