@@ -50,7 +50,9 @@ export default function ProductDetailPage() {
   }
 
   const handleAddToCart = () => {
-    if (!selectedSize && product.category !== "Swimming" && product.category !== "Golf") {
+    const requiresSize = needsSizeSelection();
+    
+    if (requiresSize && !selectedSize) {
       toast({
         title: "Please select a size",
         variant: "destructive"
@@ -102,21 +104,30 @@ export default function ProductDetailPage() {
   const needsSizeSelection = () => {
     // Items that definitely don't need sizes
     const noSizeItems = [
-      'basketball', 'tennis', 'golf', 'football', 'racket', 'club', 'ball',
-      'goggles', 'cap', 'hat', 'gloves', 'socks', 'towel', 'bag', 'accessory'
+      'basketball', 'tennis', 'golf', 'football', 'soccer', 'racket', 'club', 'ball',
+      'goggles', 'cap', 'hat', 'beanie', 'gloves', 'socks', 'towel', 'bag', 'accessory',
+      'equipment', 'accessories', 'ball', 'net', 'bat', 'stick', 'paddle', 'dumbbell',
+      'kettlebell', 'mat', 'yoga mat', 'jump rope', 'resistance band', 'glove', 'mitt',
+      'helmet', 'goggle', 'sunglasses', 'water bottle', 'bottle', 'bag', 'backpack', 'strap',
+      'band', 'weight', 'belt', 'towel', 'headband', 'wristband', 'sleeve', 'compression',
+      'brace', 'support', 'tape', 'grip', 'gripper', 'chalk', 'powder', 'bag', 'case',
+      'cover', 'protector', 'cleaner', 'maintenance', 'kit', 'set', 'combo', 'package'
+    ];
+    
+    // Categories that definitely need sizes
+    const needsSizeCategories = [
+      // Clothing
+      'shirt', 't-shirt', 'jersey', 'top', 'blouse', 'polo', 'sweater', 'hoodie', 'sweatshirt',
+      'jacket', 'coat', 'vest', 'pants', 'trousers', 'shorts', 'skirt', 'dress', 'leggings',
+      'tights', 'shorts', 'trunks', 'briefs', 'underwear', 'socks', 'bra', 'sports bra',
+      // Footwear
+      'shoes', 'sneakers', 'boots', 'cleats', 'footwear', 'sandals', 'flip flops', 'slippers',
+      // Headwear that might need sizing
+      'helmet', 'hat', 'cap', 'beanie'
     ];
     
     // Check if product is in categories that need sizes
-    const needsSizeCategories = ['clothing', 'apparel', 'shirt', 'pants', 'shorts', 'jacket', 'hoodie', 'jersey'];
-    
-    // Check if product name contains size-requiring keywords
     const isWearable = needsSizeCategories.some(keyword => 
-      product.name.toLowerCase().includes(keyword) ||
-      product.category.toLowerCase().includes(keyword)
-    );
-    
-    // Check if product is a shoe
-    const isShoe = ['shoes', 'sneakers', 'boots', 'footwear', 'cleats'].some(keyword => 
       product.name.toLowerCase().includes(keyword) ||
       product.category.toLowerCase().includes(keyword)
     );
@@ -127,7 +138,8 @@ export default function ProductDetailPage() {
       product.category.toLowerCase().includes(keyword)
     );
     
-    return isWearable || isShoe || !isNoSizeItem;
+    // Only require size if it's a wearable item and not in the no-size list
+    return isWearable && !isNoSizeItem;
   };
 
   // Get size type based on product

@@ -55,7 +55,7 @@ export default function WishlistPage() {
                   <div className="mt-4 flex justify-between">
                     <div>
                       <h3 className="text-sm font-medium">
-                        <Link to={`/product/${product.id}`}>
+                        <Link to={`/products/${product.id}`}>
                           <span aria-hidden="true" className="absolute inset-0" />
                           {product.name}
                         </Link>

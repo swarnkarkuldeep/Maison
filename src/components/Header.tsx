@@ -25,6 +25,7 @@ import { useToast } from "@/components/ui/use-toast";
 import { useSearch } from "@/context/SearchContext";
 import { useNavigate } from "react-router-dom";
 import { useWishlist } from "@/contexts/WishlistContext";
+import { useCart } from "@/contexts/CartContext";
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -34,6 +35,7 @@ export default function Header() {
   const location = useLocation();
   const { toast } = useToast();
   const { wishlist } = useWishlist();
+  const { cartCount } = useCart();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -161,9 +163,11 @@ export default function Header() {
                 <Link to="/cart" className="relative p-2 text-foreground/80 hover:text-foreground transition-colors">
                   <ShoppingBag className="h-5 w-5" />
                   <span className="sr-only">Cart</span>
-                  <span className="absolute -top-1 -right-1 bg-foreground text-background text-xs h-5 w-5 rounded-full flex items-center justify-center">
-                    0
-                  </span>
+                  {cartCount > 0 && (
+                    <span className="absolute -top-1 -right-1 bg-foreground text-background text-xs h-5 w-5 rounded-full flex items-center justify-center">
+                      {cartCount > 9 ? '9+' : cartCount}
+                    </span>
+                  )}
                 </Link>
               </div>
             </div>

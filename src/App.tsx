@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import { SearchProvider } from "./context/SearchContext";
 import { WishlistProvider } from "./contexts/WishlistContext";
+import { CartProvider } from "./contexts/CartContext";
 import Index from "./pages/Index";
 import WishlistPage from "./pages/WishlistPage";
 import NotFound from "./pages/NotFound";
@@ -56,17 +57,19 @@ function AnimatedRoutes() {
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
+    <SearchProvider>
       <WishlistProvider>
-        <SearchProvider>
-          <BrowserRouter>
-            <AnimatedRoutes />
-          </BrowserRouter>
-        </SearchProvider>
+        <CartProvider>
+          <TooltipProvider>
+            <BrowserRouter>
+              <AnimatedRoutes />
+            </BrowserRouter>
+            <Toaster />
+            <Sonner />
+          </TooltipProvider>
+        </CartProvider>
       </WishlistProvider>
-    </TooltipProvider>
+    </SearchProvider>
   </QueryClientProvider>
 );
 

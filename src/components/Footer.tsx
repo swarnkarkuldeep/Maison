@@ -107,17 +107,30 @@ export default function Footer() {
           </div>
         </div>
         
+        <div className="mt-12 mb-8 p-6 bg-muted/50 rounded-lg text-center">
+          <div className="max-w-3xl mx-auto">
+            <p className="text-2xl font-bold mb-4">Built in just 7 hours!</p>
+            <p className="text-foreground/80 mb-4">
+              Yes, you read that right! This entire e-commerce experience was crafted in a single day's work. 
+              From design to deployment, I built it with ❤️, Coffee, and a few too many keyboard smashes.
+            </p>
+            <p className="text-foreground/70 italic">
+              Found a bug? That's not a bug, it's a "feature in progress"
+            </p>
+          </div>
+        </div>
+
         <div className="mt-8 text-xs text-foreground/50 text-center">
           <p className="max-w-4xl mx-auto">
-          This website is created solely for demonstration and web development purposes. All content, including but not limited to images, text, graphics, and code, is intended for illustrative and educational use only. No commercial activity is conducted through this website, and no profit is derived from its operation.
+            This website is created solely for demonstration and web development purposes. All content, including but not limited to images, text, graphics, and code, is intended for illustrative and educational use only. No commercial activity is conducted through this website, and no profit is derived from its operation.
 
-All images, brand names, logos, and trademarks featured on this website are the property of their respective owners. Their use is strictly for illustrative purposes and does not imply any affiliation with, endorsement by, or sponsorship from the respective owners. No copyright infringement is intended, and all intellectual property rights remain with their rightful holders.
+            All images, brand names, logos, and trademarks featured on this website are the property of their respective owners. Their use is strictly for illustrative purposes and does not imply any affiliation with, endorsement by, or sponsorship from the respective owners. No copyright infringement is intended, and all intellectual property rights remain with their rightful holders.
 
-The products, services, and entities depicted on this website are either fictitious or used in a purely illustrative manner. Any resemblance to actual products, services, companies, persons (living or dead), or actual events is purely coincidental and unintentional.
+            The products, services, and entities depicted on this website are either fictitious or used in a purely illustrative manner. Any resemblance to actual products, services, companies, persons (living or dead), or actual events is purely coincidental and unintentional.
 
-This website does not offer any goods or services for sale, nor does it collect payment or personal information for commercial purposes. The information provided herein is not intended as professional advice, and users should not rely on it for any real-world decision-making.
+            This website does not offer any goods or services for sale, nor does it collect payment or personal information for commercial purposes. The information provided herein is not intended as professional advice, and users should not rely on it for any real-world decision-making.
           </p>
-          <p>All the images are taken from Pinterest and are not at all mine.</p>
+          <p className="mt-2">All the images are taken from Pinterest and are not at all mine.</p>
         </div>
       </div>
     </footer>
