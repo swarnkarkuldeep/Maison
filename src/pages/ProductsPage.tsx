@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
+import { useState, useEffect, useRef, useCallback } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -65,6 +65,11 @@ export default function ProductsPage() {
   const [selectedPriceRanges, setSelectedPriceRanges] = useState<string[]>([]);
   const [sortOption, setSortOption] = useState("featured");
   const [mobileFilterOpen, setMobileFilterOpen] = useState(false);
+  const [productsToShow, setProductsToShow] = useState(12);
+  const [isLoading, setIsLoading] = useState(false);
+  const productsPerPage = 12;
+  const observer = useRef<IntersectionObserver | null>(null);
+  const loadMoreRef = useRef<HTMLDivElement>(null);
   
   // Parse price from string format "$XX.XX"
   const parsePrice = (priceStr: string) => {
@@ -78,6 +83,52 @@ export default function ProductsPage() {
     }, 300);
   }, []);
   
+  // Handle infinite scroll
+  const loadMoreProducts = useCallback(() => {
+    if (isLoading || productsToShow >= visibleProducts.length) return;
+    
+    setIsLoading(true);
+    
+    // Simulate loading delay
+    setTimeout(() => {
+      setProductsToShow(prev => Math.min(prev + productsPerPage, visibleProducts.length));
+      setIsLoading(false);
+    }, 800);
+  }, [isLoading, productsToShow, visibleProducts.length, productsPerPage]);
+
+  // Set up intersection observer for infinite scroll
+  useEffect(() => {
+    if (isLoading) return;
+    
+    const handleObserver = (entries: IntersectionObserverEntry[]) => {
+      const target = entries[0];
+      if (target.isIntersecting) {
+        loadMoreProducts();
+      }
+    };
+    
+    observer.current = new IntersectionObserver(handleObserver, {
+      root: null,
+      rootMargin: '20px',
+      threshold: 0.1
+    });
+    
+    if (loadMoreRef.current) {
+      observer.current.observe(loadMoreRef.current);
+    }
+    
+    return () => {
+      if (observer.current) {
+        observer.current.disconnect();
+      }
+    };
+  }, [isLoading, loadMoreProducts]);
+  
+  // Reset productsToShow when filters change
+  useEffect(() => {
+    setProductsToShow(productsPerPage);
+  }, [selectedSport, selectedPriceRanges, priceRange, sortOption, productsPerPage]);
+
   useEffect(() => {
     setAnimateProducts(false);
     setTimeout(() => {
@@ -474,7 +525,7 @@ export default function ProductsPage() {
                 transition={{ staggerChildren: 0.1 }}
               >
                 {visibleProducts.length > 0 ? (
-                  visibleProducts.map((product, index) => (
+                  visibleProducts.slice(0, productsToShow).map((product, index) => (
                     <motion.div 
                       key={product.id}
                       initial={{ opacity: 0, y: 20 }}
@@ -512,6 +563,27 @@ export default function ProductsPage() {
                   </div>
                 )}
               </motion.div>
+              
+              {/* Loading indicator for infinite scroll */}
+              <div ref={loadMoreRef} className="w-full h-20 flex items-center justify-center col-span-full">
+                <AnimatePresence>
+                  {isLoading && (
+                    <motion.div
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -10 }}
+                      className="flex items-center space-x-2 text-foreground/70"
+                    >
+                      <motion.span
+                        animate={{ rotate: 360 }}
+                        transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+                        className="h-5 w-5 border-2 border-foreground/30 border-t-foreground/80 rounded-full"
+                      />
+                      <span>Loading more...</span>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
             </div>
           </div>
         </div>

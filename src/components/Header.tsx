@@ -22,12 +22,14 @@ import {
 } from "@/components/ui/sheet";
 import { Input } from "@/components/ui/input";
 import { useToast } from "@/components/ui/use-toast";
+import { useSearch } from "@/context/SearchContext";
+import { useNavigate } from "react-router-dom";
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
-  const [searchQuery, setSearchQuery] = useState("");
+  const { searchQuery, setSearchQuery, handleSearch } = useSearch();
   const location = useLocation();
   const { toast } = useToast();
 
@@ -51,16 +53,11 @@ export default function Header() {
     return location.pathname === path;
   };
 
-  const handleSearch = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (searchQuery.trim()) {
-      toast({
-        title: "Search initiated",
-        description: `Searching for "${searchQuery}"`,
-      });
-      // In a real app, you would redirect to search results page
-      console.log("Searching for:", searchQuery);
-    }
+  const navigate = useNavigate();
+
+  const handleSearchSubmit = (e: React.FormEvent) => {
+    handleSearch(e, navigate);
+    setSearchOpen(false);
   };
 
   const addToWishlist = () => {
@@ -78,14 +75,9 @@ export default function Header() {
         }`}
       >
         <div className="container mx-auto px-4">
-          <div className="flex justify-between items-center relative">
-            {/* Logo - visible on all devices */}
-            <Link to="/" className="text-2xl font-bold tracking-tight z-10 md:absolute md:left-1/2 md:transform md:-translate-x-1/2">
-              MAISON
-            </Link>
-            
+          <div className="flex items-center justify-between relative">
             {/* Left navigation on desktop */}
-            <NavigationMenu className="hidden md:flex">
+            <NavigationMenu className="hidden md:flex flex-1">
               <NavigationMenuList>
                 <NavigationMenuItem>
                   <Link 
@@ -105,43 +97,68 @@ export default function Header() {
                 </NavigationMenuItem>
               </NavigationMenuList>
             </NavigationMenu>
-            
-            {/* Placeholder to ensure correct spacing */}
-            <div className="hidden md:block invisible">
+
+            {/* Logo - always centered on desktop */}
+            <div className="flex-1 flex justify-center md:absolute md:left-1/2 md:transform md:-translate-x-1/2 z-10">
+              <Link to="/" className="text-2xl font-bold tracking-tight">
+                MAISON
+              </Link>
+            </div>
+
+            {/* Right navigation and actions on desktop */}
+            <div className="hidden md:flex flex-1 justify-end items-center space-x-4">
               <NavigationMenu>
                 <NavigationMenuList>
                   <NavigationMenuItem>
-                    <span className="text-sm px-4 py-2">PLACEHOLDER</span>
+                    <Link 
+                      to="/designers" 
+                      className={`text-sm px-4 py-2 transition ${isActive('/designers') ? 'text-foreground' : 'text-foreground/80 hover:text-foreground'}`}
+                    >
+                      DESIGNERS
+                    </Link>
                   </NavigationMenuItem>
                   <NavigationMenuItem>
-                    <span className="text-sm px-4 py-2">PLACEHOLDER</span>
+                    <Link 
+                      to="/stores" 
+                      className={`text-sm px-4 py-2 transition ${isActive('/stores') ? 'text-foreground' : 'text-foreground/80 hover:text-foreground'}`}
+                    >
+                      STORES
+                    </Link>
                   </NavigationMenuItem>
                 </NavigationMenuList>
               </NavigationMenu>
+              <div className="flex items-center space-x-2 ml-4">
+                <Sheet open={searchOpen} onOpenChange={setSearchOpen}>
+                  <SheetTrigger asChild>
+                    <button className="text-foreground/80 hover:text-foreground transition">
+                      <Search className="h-4 w-4" />
+                    </button>
+                  </SheetTrigger>
+                  <SheetContent side="top" className="h-32">
+                    <form onSubmit={handleSearchSubmit} className="flex items-center gap-2 pt-8">
+                      <Input 
+                        placeholder="Search products..." 
+                        value={searchQuery}
+                        onChange={(e) => setSearchQuery(e.target.value)}
+                        className="flex-1"
+                        autoFocus
+                      />
+                      <Button type="submit">Search</Button>
+                    </form>
+                  </SheetContent>
+                </Sheet>
+                <button onClick={addToWishlist} className="text-foreground/80 hover:text-foreground transition">
+                  <Heart className="h-4 w-4" />
+                </button>
+                <Link to="/profile" className="text-foreground/80 hover:text-foreground transition">
+                  <User className="h-4 w-4" />
+                </Link>
+                <Link to="/cart" className="text-foreground/80 hover:text-foreground transition">
+                  <ShoppingBag className="h-4 w-4" />
+                </Link>
+              </div>
             </div>
-            
-            {/* Right navigation on desktop */}
-            <NavigationMenu className="hidden md:flex">
-              <NavigationMenuList>
-                <NavigationMenuItem>
-                  <Link 
-                    to="/designers" 
-                    className={`text-sm px-4 py-2 transition ${isActive('/designers') ? 'text-foreground' : 'text-foreground/80 hover:text-foreground'}`}
-                  >
-                    DESIGNERS
-                  </Link>
-                </NavigationMenuItem>
-                <NavigationMenuItem>
-                  <Link 
-                    to="/stores" 
-                    className={`text-sm px-4 py-2 transition ${isActive('/stores') ? 'text-foreground' : 'text-foreground/80 hover:text-foreground'}`}
-                  >
-                    STORES
-                  </Link>
-                </NavigationMenuItem>
-              </NavigationMenuList>
-            </NavigationMenu>
-            
+
             {/* Mobile header */}
             <div className="flex items-center justify-between w-full md:hidden">
               <button 
@@ -150,46 +167,18 @@ export default function Header() {
               >
                 <Menu />
               </button>
+              <div className="flex-1 flex justify-center">
+                <Link to="/" className="text-2xl font-bold tracking-tight">
+                  MAISON
+                </Link>
+              </div>
               <div className="invisible">
                 <Menu />
               </div>
             </div>
-            
-            {/* Desktop actions */}
-            <div className="hidden md:flex items-center space-x-4">
-              <Sheet open={searchOpen} onOpenChange={setSearchOpen}>
-                <SheetTrigger asChild>
-                  <button className="text-foreground/80 hover:text-foreground transition">
-                    <Search className="h-4 w-4" />
-                  </button>
-                </SheetTrigger>
-                <SheetContent side="top" className="h-32">
-                  <form onSubmit={handleSearch} className="flex items-center gap-2 pt-8">
-                    <Input 
-                      placeholder="Search products..." 
-                      value={searchQuery}
-                      onChange={(e) => setSearchQuery(e.target.value)}
-                      className="flex-1"
-                      autoFocus
-                    />
-                    <Button type="submit">Search</Button>
-                  </form>
-                </SheetContent>
-              </Sheet>
-              <button onClick={addToWishlist} className="text-foreground/80 hover:text-foreground transition">
-                <Heart className="h-4 w-4" />
-              </button>
-              <Link to="/profile" className="text-foreground/80 hover:text-foreground transition">
-                <User className="h-4 w-4" />
-              </Link>
-              <Link to="/cart" className="text-foreground/80 hover:text-foreground transition">
-                <ShoppingBag className="h-4 w-4" />
-              </Link>
-            </div>
           </div>
         </div>
       </header>
-      
       {/* Mobile menu */}
       <AnimatePresence>
         {mobileMenuOpen && (

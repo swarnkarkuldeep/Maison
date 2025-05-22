@@ -1,9 +1,6 @@
-
 import { motion } from "framer-motion";
-import { useState } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 const designers = [
   {
@@ -54,8 +51,6 @@ const designers = [
 ];
 
 export default function DesignersPage() {
-  const [selectedTab, setSelectedTab] = useState<string>(designers[0].id.toString());
-  
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -65,83 +60,67 @@ export default function DesignersPage() {
       className="min-h-screen bg-background"
     >
       <Header />
-      
+
       <main className="pt-24 pb-20">
         <div className="container mx-auto px-4">
-          <motion.div 
+          <motion.div
             initial={{ y: -20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.2 }}
-            className="mb-16 text-center"
+            className="mb-20 text-center"
           >
-            <h1 className="font-display text-6xl md:text-7xl fashion-header mb-6">MASTER CRAFTSMEN</h1>
+            <h1 className="font-display text-6xl md:text-7xl fashion-header mb-6">
+              MASTER CRAFTSMEN
+            </h1>
             <p className="text-foreground/70 max-w-2xl mx-auto">
               Meet the visionary minds behind MAISON's revolutionary blend of high fashion and athletic performance.
             </p>
           </motion.div>
-          
-          <Tabs
-            defaultValue={selectedTab}
-            value={selectedTab}
-            onValueChange={setSelectedTab}
-            className="w-full max-w-5xl mx-auto"
-          >
-            <div className="overflow-x-auto pb-4">
-              <TabsList className="bg-transparent border-b border-foreground/20 rounded-none w-full justify-start space-x-8">
-                {designers.map((designer) => (
-                  <TabsTrigger
-                    key={designer.id}
-                    value={designer.id.toString()}
-                    className="border-b-2 border-transparent data-[state=active]:border-foreground pb-4 rounded-none"
-                  >
-                    {designer.name}
-                  </TabsTrigger>
-                ))}
-              </TabsList>
-            </div>
-            
-            {designers.map((designer) => (
-              <TabsContent
+
+          <div className="space-y-24">
+            {designers.map((designer, index) => (
+              <motion.div
                 key={designer.id}
-                value={designer.id.toString()}
-                className="mt-12"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+                className="grid md:grid-cols-2 gap-8 items-start"
               >
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.98 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.5 }}
-                  className="grid md:grid-cols-2 gap-12 items-center"
-                >
-                  <div className="aspect-[4/5] overflow-hidden">
+                <div className="w-full max-w-md mx-auto">
+                  <div className="aspect-square overflow-hidden rounded-lg shadow-lg">
                     <img
                       src={designer.image}
                       alt={designer.name}
-                      className="w-full h-full object-cover"
+                      className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
                     />
                   </div>
+                </div>
+
+                <div className="space-y-6 p-4">
+                  <div className="space-y-2">
+                    <h2 className="font-display text-3xl md:text-4xl fashion-header">{designer.name}</h2>
+                    <p className="text-foreground/70 text-base md:text-lg">{designer.role}</p>
+                  </div>
+
+                  <div className="bg-muted/30 p-4 rounded-lg">
+                    <p className="text-sm font-medium text-foreground/60 mb-1">SPECIALTY</p>
+                    <p className="text-foreground font-medium">{designer.specialty}</p>
+                  </div>
                   
-                  <div className="space-y-6">
-                    <div>
-                      <h2 className="font-display text-4xl fashion-header">{designer.name}</h2>
-                      <p className="text-foreground/70 text-lg">{designer.role}</p>
-                    </div>
-                    
-                    <p className="text-sm text-foreground/60">SPECIALTY</p>
-                    <p className="font-medium">{designer.specialty}</p>
-                    
-                    <p className="text-lg">{designer.bio}</p>
-                    
-                    <blockquote className="border-l-2 border-foreground/20 pl-4 italic text-foreground/80 text-lg">
-                      "{designer.quote}"
+                  <div className="space-y-4">
+                    <p className="text-foreground/90 leading-relaxed">{designer.bio}</p>
+                    <blockquote className="relative pl-6 border-l-2 border-primary/30 italic text-foreground/80">
+                      <span className="absolute left-0 top-0 text-4xl text-primary/30 leading-none">&ldquo;</span>
+                      <p className="pl-4 pt-2">{designer.quote}</p>
                     </blockquote>
                   </div>
-                </motion.div>
-              </TabsContent>
+                </div>
+              </motion.div>
             ))}
-          </Tabs>
+          </div>
         </div>
       </main>
-      
+
       <Footer />
     </motion.div>
   );

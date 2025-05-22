@@ -55,7 +55,7 @@ export default function HeroSection() {
             <div className="flex flex-wrap gap-4 mt-8">
               <Button
                 asChild
-                className="group border border-foreground bg-transparent hover:bg-foreground hover:text-background transition-all duration-300"
+                className="group border border-foreground/20 bg-white text-black hover:bg-black hover:text-white transition-all duration-300"
               >
                 <Link to="/products">
                   SHOP NOW 
