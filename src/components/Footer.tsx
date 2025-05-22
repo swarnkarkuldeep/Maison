@@ -115,7 +115,7 @@ export default function Footer() {
               From design to deployment, I built it with ❤️, Coffee, and a few too many keyboard smashes.
             </p>
             <p className="text-foreground/70 italic">
-              Found a bug? That's not a bug, it's a "feature in progress"
+              Found a bug? That's not a bug, it's a "feature in progress" and will be fixed with time.
             </p>
           </div>
         </div>
