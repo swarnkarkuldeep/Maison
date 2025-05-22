@@ -503,18 +503,23 @@ export default function ProductsPage() {
                 <p className="text-sm">{visibleProducts.length} products</p>
                 
                 <div className="flex items-center space-x-2">
-                  <span className="text-sm mr-1">Sort by:</span>
-                  <select 
-                    value={sortOption}
-                    onChange={(e) => setSortOption(e.target.value)}
-                    className="text-sm border border-input bg-transparent rounded px-2 py-1"
-                  >
-                    <option value="featured">Featured</option>
-                    <option value="price-low">Price: Low to High</option>
-                    <option value="price-high">Price: High to Low</option>
-                    <option value="name-asc">Name: A to Z</option>
-                    <option value="name-desc">Name: Z to A</option>
-                  </select>
+                  <span className="text-sm text-foreground/80">Sort by:</span>
+                  <div className="relative">
+                    <select 
+                      value={sortOption}
+                      onChange={(e) => setSortOption(e.target.value)}
+                      className="appearance-none bg-background border border-input rounded-md pl-3 pr-8 py-1.5 text-sm focus:ring-2 focus:ring-primary/50 focus:border-primary outline-none transition-all cursor-pointer"
+                    >
+                      <option value="featured">Featured</option>
+                      <option value="price-low">Price: Low to High</option>
+                      <option value="price-high">Price: High to Low</option>
+                      <option value="name-asc">Name: A to Z</option>
+                      <option value="name-desc">Name: Z to A</option>
+                    </select>
+                    <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-foreground/60">
+                      <ChevronDown className="h-4 w-4" />
+                    </div>
+                  </div>
                 </div>
               </div>
               
