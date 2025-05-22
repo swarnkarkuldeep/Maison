@@ -1,13 +1,14 @@
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { useToast } from "@/components/ui/use-toast";
+import { useWishlist } from "@/contexts/WishlistContext";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
-import { Heart, ChevronDown, ChevronUp, Star } from "lucide-react";
+import { Heart, ChevronDown, ChevronUp, Star, Check } from "lucide-react";
 import {
   Accordion,
   AccordionContent,
@@ -20,12 +21,21 @@ import { allProducts } from "@/data/products";
 export default function ProductDetailPage() {
   const { productId } = useParams();
   const { toast } = useToast();
+  const { addToWishlist, removeFromWishlist, isInWishlist } = useWishlist();
   const [quantity, setQuantity] = useState(1);
   const [selectedSize, setSelectedSize] = useState("");
   const [selectedColor, setSelectedColor] = useState("");
+  const [isWishlisted, setIsWishlisted] = useState(false);
   
   // Find product from all products list
-  const product = allProducts.find(product => product.id === parseInt(productId || "0", 10));
+  const product = allProducts.find(p => p.id === parseInt(productId || "0", 10));
+  
+  // Update wishlist status when product changes
+  useEffect(() => {
+    if (product) {
+      setIsWishlisted(isInWishlist(product.id));
+    }
+  }, [product, isInWishlist]);
   
   // If product not found
   if (!product) {
@@ -54,36 +64,118 @@ export default function ProductDetailPage() {
     });
   };
 
-  const handleAddToWishlist = () => {
-    toast({
-      title: "Added to wishlist",
-      description: `${product.name} has been added to your wishlist.`,
-    });
+  const handleWishlistToggle = () => {
+    if (!product) return;
+    
+    if (isWishlisted) {
+      removeFromWishlist(product.id);
+      toast({
+        title: "Removed from wishlist",
+        description: `${product.name} has been removed from your wishlist.`,
+      });
+    } else {
+      // Convert price to number if it's a string with $ sign
+      const priceValue = typeof product.price === 'string' 
+        ? parseFloat(product.price.replace(/[^0-9.-]+/g, '')) 
+        : product.price;
+        
+      addToWishlist({
+        id: product.id,
+        name: product.name,
+        price: typeof priceValue === 'number' ? `$${priceValue.toFixed(2)}` : product.price,
+        image: product.image, // Using the single image from the product
+        category: product.category
+      });
+      toast({
+        title: "Added to wishlist",
+        description: `${product.name} has been added to your wishlist.`,
+      });
+    }
+    setIsWishlisted(!isWishlisted);
   };
 
   const handleQuantityChange = (change: number) => {
     setQuantity(prev => Math.max(1, prev + change));
   };
 
-  // Available sizes based on category
+  // Check if product needs size selection
+  const needsSizeSelection = () => {
+    // Items that definitely don't need sizes
+    const noSizeItems = [
+      'basketball', 'tennis', 'golf', 'football', 'racket', 'club', 'ball',
+      'goggles', 'cap', 'hat', 'gloves', 'socks', 'towel', 'bag', 'accessory'
+    ];
+    
+    // Check if product is in categories that need sizes
+    const needsSizeCategories = ['clothing', 'apparel', 'shirt', 'pants', 'shorts', 'jacket', 'hoodie', 'jersey'];
+    
+    // Check if product name contains size-requiring keywords
+    const isWearable = needsSizeCategories.some(keyword => 
+      product.name.toLowerCase().includes(keyword) ||
+      product.category.toLowerCase().includes(keyword)
+    );
+    
+    // Check if product is a shoe
+    const isShoe = ['shoes', 'sneakers', 'boots', 'footwear', 'cleats'].some(keyword => 
+      product.name.toLowerCase().includes(keyword) ||
+      product.category.toLowerCase().includes(keyword)
+    );
+    
+    // Check if product is explicitly marked as not needing sizes
+    const isNoSizeItem = noSizeItems.some(keyword => 
+      product.name.toLowerCase().includes(keyword) ||
+      product.category.toLowerCase().includes(keyword)
+    );
+    
+    return isWearable || isShoe || !isNoSizeItem;
+  };
+
+  // Get size type based on product
+  const getSizeType = () => {
+    const shoeKeywords = ['shoes', 'sneakers', 'boots', 'footwear', 'cleats'];
+    const isShoe = shoeKeywords.some(keyword => 
+      product.name.toLowerCase().includes(keyword) ||
+      product.category.toLowerCase().includes(keyword)
+    );
+    
+    return isShoe ? 'US' : 'Size';
+  };
+
+  // Available sizes based on product type
   const getSizes = () => {
-    switch (product.category) {
-      case "Tennis":
-      case "Basketball":
-      case "Football":
-      case "Running":
-        return ["XS", "S", "M", "L", "XL", "XXL"];
-      case "Swimming":
-        return [];
-      case "Golf":
-        return [];
-      default:
-        return ["S", "M", "L", "XL"];
-    }
+    const shoeSizes = [
+      '5', '5.5', '6', '6.5', '7', '7.5', '8', '8.5', '9', '9.5', '10', '10.5', '11', '11.5', '12', '13'
+    ];
+    
+    const clothingSizes = ['XS', 'S', 'M', 'L', 'XL', 'XXL'];
+    
+    // Check if it's a shoe
+    const isShoe = ['shoes', 'sneakers', 'boots', 'footwear', 'cleats'].some(keyword => 
+      product.name.toLowerCase().includes(keyword) ||
+      product.category.toLowerCase().includes(keyword)
+    );
+    
+    // Check if it's clothing
+    const isClothing = [
+      'jersey', 'shirt', 'top', 't-shirt', 'pants', 'shorts', 'jacket',
+      'hoodie', 'sweater', 'tracksuit', 'tank', 'polo'
+    ].some(keyword => 
+      product.name.toLowerCase().includes(keyword) ||
+      product.category.toLowerCase().includes(keyword)
+    );
+    
+    // Return appropriate sizes
+    if (isShoe) return shoeSizes;
+    if (isClothing) return clothingSizes;
+    
+    // No sizes for equipment
+    return [];
   };
 
   const availableSizes = getSizes();
-  const colors = ["Black", "White", "Red", "Blue", "Green"];
+  const showSizeSelector = needsSizeSelection() && availableSizes.length > 0;
+  const sizeType = getSizeType();
+  const colors = ["Black", "White", "Red", "Navy", "Gray", "Green"];
   
   return (
     <motion.div
@@ -148,23 +240,36 @@ export default function ProductDetailPage() {
               <Separator />
               
               {/* Size Selector */}
-              {availableSizes.length > 0 && (
+              {showSizeSelector && (
                 <div className="space-y-4">
-                  <div className="flex justify-between">
-                    <h3 className="font-medium">Size</h3>
-                    <button className="text-sm underline">Size Guide</button>
+                  <div className="flex justify-between items-center">
+                    <h3 className="font-medium">Select {sizeType} Size</h3>
+                    <button 
+                      className="text-sm underline hover:no-underline"
+                      onClick={() => {
+                        // Show size guide based on product type
+                        const guideUrl = sizeType === 'US' 
+                          ? '/size-guide/shoes' 
+                          : '/size-guide/clothing';
+                        // In a real app, you would navigate to the size guide
+                        console.log('Navigate to:', guideUrl);
+                      }}
+                    >
+                      Size Guide
+                    </button>
                   </div>
                   
-                  <div className="flex flex-wrap gap-2">
+                  <div className="grid grid-cols-4 sm:grid-cols-5 gap-2">
                     {availableSizes.map(size => (
                       <button
                         key={size}
+                        type="button"
                         onClick={() => setSelectedSize(size)}
-                        className={`px-4 py-2 border ${
+                        className={`px-3 py-2 text-sm border rounded-sm text-center ${
                           selectedSize === size 
                             ? 'border-foreground bg-foreground text-background' 
-                            : 'border-foreground/20 hover:border-foreground/80'
-                        } transition-colors`}
+                            : 'border-foreground/20 hover:border-foreground/60 transition-colors'
+                        }`}
                       >
                         {size}
                       </button>
@@ -224,11 +329,19 @@ export default function ProductDetailPage() {
                 </Button>
                 
                 <Button 
-                  onClick={handleAddToWishlist}
-                  variant="outline" 
-                  className="flex-1 border-foreground/20"
+                  onClick={handleWishlistToggle}
+                  variant={isWishlisted ? "default" : "outline"}
+                  className={`flex-1 ${isWishlisted ? 'bg-black hover:bg-black/90' : 'border-foreground/20'}`}
                 >
-                  <Heart className="mr-2 h-4 w-4" /> WISHLIST
+                  {isWishlisted ? (
+                    <>
+                      <Check className="mr-2 h-4 w-4" /> ADDED TO WISHLIST
+                    </>
+                  ) : (
+                    <>
+                      <Heart className="mr-2 h-4 w-4" /> ADD TO WISHLIST
+                    </>
+                  )}
                 </Button>
               </div>
               

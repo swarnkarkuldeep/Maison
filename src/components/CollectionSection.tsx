@@ -12,22 +12,22 @@ export default function CollectionSection() {
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-16">
-          {/* Collection Item 1 */}
+          {/* Collection Item 1 - Tennis Collection */}
           <div className="group">
             <div className="aspect-[3/4] bg-secondary overflow-hidden mb-4">
               <img 
-                src="https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&q=80&w=1024" 
-                alt="Fashion model in black outfit"
+                src="https://i.pinimg.com/736x/b9/f1/8e/b9f18eb111c5b69f5a15fe41cee2d28a.jpg" 
+                alt="Tennis player in action"
                 className="w-full h-full object-cover transition duration-500 group-hover:scale-105"
               />
             </div>
             <div className="flex justify-between items-center">
-              <h3 className="font-display text-xl fashion-subheader">VOYOU CHAIN</h3>
-              <span className="text-foreground/70 text-sm">01/04</span>
+              <h3 className="font-display text-xl fashion-subheader">COURT MASTERS</h3>
+              <span className="text-foreground/70 text-sm">SS 2024</span>
             </div>
             <p className="text-foreground/70 text-sm mt-2 max-w-sm">
-              Chain joins the house's hit handbags, conveying a feeling of temptation and desire 
-              for sophisticated nonchalance
+              High-performance tennis apparel designed for agility and style on the court.
+              Engineered for champions who demand both form and function.
             </p>
             <div className="mt-4">
               <Button 
@@ -35,27 +35,27 @@ export default function CollectionSection() {
                 variant="minimal" 
                 className="font-display fashion-subheader text-sm mt-4"
               >
-                <Link to="/collections">VIEW COLLECTION</Link>
+                <Link to="/collections#collection-1">VIEW COLLECTION</Link>
               </Button>
             </div>
           </div>
           
-          {/* Collection Item 2 */}
+          {/* Collection Item 2 - Basketball Collection */}
           <div className="group md:mt-24">
             <div className="aspect-[3/4] bg-secondary overflow-hidden mb-4">
               <img 
-                src="https://images.unsplash.com/photo-1549062572-544a64fb0c56?auto=format&fit=crop&q=80&w=1024" 
-                alt="Fashion model in white coat"
+                src="https://i.pinimg.com/736x/34/f5/3c/34f53ce2c963bec2c3e825ec790e9316.jpg" 
+                alt="Basketball player dunking"
                 className="w-full h-full object-cover transition duration-500 group-hover:scale-105"
               />
             </div>
             <div className="flex justify-between items-center">
-              <h3 className="font-display text-xl fashion-subheader">AVENIR LINE</h3>
-              <span className="text-foreground/70 text-sm">02/04</span>
+              <h3 className="font-display text-xl fashion-subheader">URBAN HOOPS</h3>
+              <span className="text-foreground/70 text-sm">SS 2024</span>
             </div>
             <p className="text-foreground/70 text-sm mt-2 max-w-sm">
-              A modern take on classic tailoring, blending structure with fluidity for 
-              the contemporary wardrobe
+              Street-ready basketball gear that transitions from the court to the city.
+              Performance meets urban style in every piece.
             </p>
             <div className="mt-4">
               <Button 
@@ -63,7 +63,7 @@ export default function CollectionSection() {
                 variant="minimal" 
                 className="font-display fashion-subheader text-sm mt-4"
               >
-                <Link to="/collections">VIEW COLLECTION</Link>
+                <Link to="/collections#collection-2">VIEW COLLECTION</Link>
               </Button>
             </div>
           </div>

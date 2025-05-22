@@ -109,7 +109,7 @@ export default function CareersPage() {
               >
                 <div className="aspect-[16/10] overflow-hidden">
                   <img 
-                    src="https://images.unsplash.com/photo-1551836022-deb4988cc6c0?auto=format&fit=crop&q=80&w=1000" 
+                    src="https://i.pinimg.com/736x/85/55/de/8555de03a2eb2c0d5f357b475edf01e1.jpg" 
                     alt="MAISON Team"
                     className="w-full h-full object-cover"
                   />
@@ -228,21 +228,21 @@ export default function CareersPage() {
               >
                 <div className="aspect-square overflow-hidden">
                   <img 
-                    src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&q=80&w=500" 
+                    src="https://i.pinimg.com/736x/7e/fb/25/7efb252728fa844eb7df6a360f037d40.jpg" 
                     alt="Team collaboration"
                     className="w-full h-full object-cover"
                   />
                 </div>
                 <div className="aspect-square overflow-hidden row-span-2">
                   <img 
-                    src="https://images.unsplash.com/photo-1568992688065-536aad8a12f6?auto=format&fit=crop&q=80&w=500" 
+                    src="https://i.pinimg.com/736x/5a/ff/4f/5aff4f10a07939fb1c4d4a7c004c2f0e.jpg" 
                     alt="Design process"
                     className="w-full h-full object-cover"
                   />
                 </div>
                 <div className="aspect-square overflow-hidden col-span-2">
                   <img 
-                    src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=1000" 
+                    src="https://i.pinimg.com/736x/a6/f0/cf/a6f0cf4222a73c35e51edf93f1d7b7ab.jpg" 
                     alt="Office space"
                     className="w-full h-full object-cover"
                   />

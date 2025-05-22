@@ -1,54 +1,41 @@
-# Welcome to your Lovable project
+# Maison Sports E-commerce
 
-## Project info
+## Project Overview
 
-**URL**: https://lovable.dev/projects/3e574a2b-340f-424b-ae36-86e70cb85e16
+A modern e-commerce website for sports equipment and apparel.
 
-## How can I edit this code?
+## Getting Started
 
-There are several ways of editing your application.
+### Available Scripts
 
-**Use Lovable**
+In the project directory, you can run:
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/3e574a2b-340f-424b-ae36-86e70cb85e16) and start prompting.
+#### `npm install`
 
-Changes made via Lovable will be committed automatically to this repo.
+Installs the required dependencies for the project.
 
-**Use your preferred IDE**
+#### `npm run dev`
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+Runs the app in the development mode.\
+Open [http://localhost:5173](http://localhost:5173) to view it in your browser.
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+The page will reload when you make changes.
 
-Follow these steps:
+#### `npm run build`
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+Builds the app for production to the `dist` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
 
-# Step 3: Install the necessary dependencies.
-npm i
+#### `npm run preview`
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
+Builds the app and then serves the production build locally for preview.
 
-**Edit a file directly in GitHub**
+## Deployment
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
-
-**Use GitHub Codespaces**
-
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+To deploy this project, you can use any static site hosting service like Vercel, Netlify, or GitHub Pages.
 
 ## What technologies are used for this project?
 
@@ -60,14 +47,111 @@ This project is built with:
 - shadcn-ui
 - Tailwind CSS
 
-## How can I deploy this project?
+# Maison Sports E-commerce
 
-Simply open [Lovable](https://lovable.dev/projects/3e574a2b-340f-424b-ae36-86e70cb85e16) and click on Share -> Publish.
+A modern, responsive e-commerce platform for high-end sports equipment and apparel, built with React and TypeScript.
 
-## Can I connect a custom domain to my Lovable project?
+![Maison Sports Screenshot](/public/screenshot.png)
 
-Yes, you can!
+## Features
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+- **Modern UI/UX** with smooth animations and transitions
+- **Responsive Design** that works on all devices
+- **Product Catalog** with filtering and search functionality
+- **Shopping Cart** with persistent storage
+- **Wishlist** to save favorite items
+- **Product Details** with image gallery
+- **Checkout Process** with form validation
+- **Responsive Navigation** with mobile menu
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+## Tech Stack
+
+- **Frontend**: React 18, TypeScript
+- **Styling**: Tailwind CSS, shadcn/ui
+- **Build Tool**: Vite
+- **State Management**: React Context API
+- **Routing**: React Router
+- **Animations**: Framer Motion
+- **Icons**: Lucide React
+
+## Prerequisites
+
+- Node.js (v16 or later)
+- npm (v7 or later) or yarn
+
+## Getting Started
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/your-username/maison-sports.git
+   cd maison-sports
+   ```
+
+2. **Install dependencies**
+   ```bash
+   npm install
+   # or
+   yarn
+   ```
+
+3. **Start the development server**
+   ```bash
+   npm run dev
+   # or
+   yarn dev
+   ```
+   Open [http://localhost:5173](http://localhost:5173) to view it in your browser.
+
+4. **Build for production**
+   ```bash
+   npm run build
+   # or
+   yarn build
+   ```
+   This will create a `dist` folder with the production build.
+
+## Project Structure
+
+```
+src/
+├── components/     # Reusable UI components
+├── contexts/       # React context providers
+├── data/           # Static data and mock database
+├── hooks/          # Custom React hooks
+├── lib/            # Utility functions and helpers
+├── pages/          # Page components
+└── styles/         # Global styles and Tailwind config
+```
+
+## Deployment
+
+Deploy the `dist` folder to any static hosting service:
+
+- [Vercel](https://vercel.com/)
+- [Netlify](https://www.netlify.com/)
+- [GitHub Pages](https://pages.github.com/)
+
+### Vercel Deployment
+
+1. Push your code to a GitHub repository
+2. Import the repository on Vercel
+3. Vercel will automatically detect the Vite project and set up the build settings
+
+## Contributing
+
+1. Fork the project
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Acknowledgments
+
+- [shadcn/ui](https://ui.shadcn.com/) for the amazing component library
+- [Tailwind CSS](https://tailwindcss.com/) for utility-first CSS
+- [Vite](https://vitejs.dev/) for the build tool
+- [Framer Motion](https://www.framer.com/motion/) for animations

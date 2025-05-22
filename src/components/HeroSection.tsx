@@ -75,7 +75,7 @@ export default function HeroSection() {
           <div className="relative">
             <div className="hero-image aspect-[2/3] bg-secondary overflow-hidden opacity-0 transition-opacity duration-700">
               <img 
-                src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&q=80&w=1024"
+                src="https://i.pinimg.com/736x/b0/74/27/b07427975183314beaca81536e2a3d94.jpg"
                 alt="Fashion model in white outfit"
                 className="w-full h-full object-cover"
               />

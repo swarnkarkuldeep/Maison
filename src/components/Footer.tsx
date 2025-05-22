@@ -99,12 +99,25 @@ export default function Footer() {
         <div className="flex flex-col md:flex-row justify-between items-center text-sm text-foreground/60">
           <p>&copy; {new Date().getFullYear()} MAISON. All rights reserved.</p>
           
-          <div className="flex space-x-4 mt-4 md:mt-0">
-            <Link to="#" className="hover:text-foreground transition-colors">Facebook</Link>
-            <Link to="#" className="hover:text-foreground transition-colors">Instagram</Link>
-            <Link to="#" className="hover:text-foreground transition-colors">Twitter</Link>
-            <Link to="#" className="hover:text-foreground transition-colors">YouTube</Link>
+          <div className="flex items-center gap-6 mt-4 md:mt-0">
+            <a href="#" className="hover:text-foreground transition-colors">Instagram</a>
+            <a href="#" className="hover:text-foreground transition-colors">Twitter</a>
+            <a href="#" className="hover:text-foreground transition-colors">Facebook</a>
+            <a href="#" className="hover:text-foreground transition-colors">Pinterest</a>
           </div>
+        </div>
+        
+        <div className="mt-8 text-xs text-foreground/50 text-center">
+          <p className="max-w-4xl mx-auto">
+          This website is created solely for demonstration and web development purposes. All content, including but not limited to images, text, graphics, and code, is intended for illustrative and educational use only. No commercial activity is conducted through this website, and no profit is derived from its operation.
+
+All images, brand names, logos, and trademarks featured on this website are the property of their respective owners. Their use is strictly for illustrative purposes and does not imply any affiliation with, endorsement by, or sponsorship from the respective owners. No copyright infringement is intended, and all intellectual property rights remain with their rightful holders.
+
+The products, services, and entities depicted on this website are either fictitious or used in a purely illustrative manner. Any resemblance to actual products, services, companies, persons (living or dead), or actual events is purely coincidental and unintentional.
+
+This website does not offer any goods or services for sale, nor does it collect payment or personal information for commercial purposes. The information provided herein is not intended as professional advice, and users should not rely on it for any real-world decision-making.
+          </p>
+          <p>All the images are taken from Pinterest and are not at all mine.</p>
         </div>
       </div>
     </footer>

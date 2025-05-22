@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { ShoppingBag, Search, Menu, X, User, Heart } from "lucide-react";
+import { ShoppingBag, Search, Menu, X, User, Heart as HeartIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   NavigationMenu,
@@ -24,6 +24,7 @@ import { Input } from "@/components/ui/input";
 import { useToast } from "@/components/ui/use-toast";
 import { useSearch } from "@/context/SearchContext";
 import { useNavigate } from "react-router-dom";
+import { useWishlist } from "@/contexts/WishlistContext";
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -32,6 +33,7 @@ export default function Header() {
   const { searchQuery, setSearchQuery, handleSearch } = useSearch();
   const location = useLocation();
   const { toast } = useToast();
+  const { wishlist } = useWishlist();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -147,14 +149,21 @@ export default function Header() {
                     </form>
                   </SheetContent>
                 </Sheet>
-                <button onClick={addToWishlist} className="text-foreground/80 hover:text-foreground transition">
-                  <Heart className="h-4 w-4" />
-                </button>
-                <Link to="/profile" className="text-foreground/80 hover:text-foreground transition">
-                  <User className="h-4 w-4" />
+                <Link to="/wishlist" className="relative p-2 text-foreground/80 hover:text-foreground transition-colors">
+                  <HeartIcon className={`h-5 w-5 ${wishlist.length > 0 ? 'fill-current' : ''}`} />
+                  <span className="sr-only">Wishlist</span>
+                  {wishlist.length > 0 && (
+                    <span className="absolute -top-1 -right-1 bg-foreground text-background text-xs h-5 w-5 rounded-full flex items-center justify-center">
+                      {wishlist.length}
+                    </span>
+                  )}
                 </Link>
-                <Link to="/cart" className="text-foreground/80 hover:text-foreground transition">
-                  <ShoppingBag className="h-4 w-4" />
+                <Link to="/cart" className="relative p-2 text-foreground/80 hover:text-foreground transition-colors">
+                  <ShoppingBag className="h-5 w-5" />
+                  <span className="sr-only">Cart</span>
+                  <span className="absolute -top-1 -right-1 bg-foreground text-background text-xs h-5 w-5 rounded-full flex items-center justify-center">
+                    0
+                  </span>
                 </Link>
               </div>
             </div>

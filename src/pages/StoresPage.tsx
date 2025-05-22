@@ -59,7 +59,7 @@ const storeLocations = [
     address: "Via Monte Napoleone, 8, 20121 Milano MI, Italy",
     phone: "+39 02 7602 9700",
     hours: "Mon-Sat: 10:00-19:00, Sun: Closed",
-    image: "https://images.unsplash.com/photo-1516438338190-ce82c3fa81b6?auto=format&fit=crop&q=80&w=1000",
+    image: "https://i.pinimg.com/736x/f4/f5/25/f4f525fcceaf05771af348f2b49d0271.jpg",
     flagship: false
   },
 ];

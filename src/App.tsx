@@ -5,7 +5,9 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import { SearchProvider } from "./context/SearchContext";
+import { WishlistProvider } from "./contexts/WishlistContext";
 import Index from "./pages/Index";
+import WishlistPage from "./pages/WishlistPage";
 import NotFound from "./pages/NotFound";
 import ProductsPage from "./pages/ProductsPage";
 import ProductDetailPage from "./pages/ProductDetailPage";
@@ -44,6 +46,7 @@ function AnimatedRoutes() {
           <Route path="/press" element={<PressPage />} />
           <Route path="/sustainability" element={<SustainabilityPage />} />
           <Route path="/search" element={<SearchResultsPage />} />
+          <Route path="/wishlist" element={<WishlistPage />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </AnimatePresence>
@@ -56,11 +59,13 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <SearchProvider>
-        <BrowserRouter>
-          <AnimatedRoutes />
-        </BrowserRouter>
-      </SearchProvider>
+      <WishlistProvider>
+        <SearchProvider>
+          <BrowserRouter>
+            <AnimatedRoutes />
+          </BrowserRouter>
+        </SearchProvider>
+      </WishlistProvider>
     </TooltipProvider>
   </QueryClientProvider>
 );

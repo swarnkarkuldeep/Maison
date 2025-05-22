@@ -21,7 +21,7 @@ const pressReleases = [
     title: "MAISON Announces Collaboration with Olympic Gold Medalist",
     date: "May 15, 2025",
     excerpt: "Luxury sports brand MAISON unveils exclusive collection designed with five-time Olympic champion.",
-    image: "https://images.unsplash.com/photo-1579952363873-27f3bade9f55?auto=format&fit=crop&q=80&w=800",
+    image: "https://i.pinimg.com/736x/1a/b2/e5/1ab2e51870039ba1269fd22347d28b39.jpg",
   },
   {
     id: 2,
@@ -42,7 +42,7 @@ const pressReleases = [
     title: "Annual Tennis Collection Launches with Sustainable Focus",
     date: "February 24, 2025",
     excerpt: "This year's tennis line features 85% recycled materials without compromising on MAISON's signature performance and style.",
-    image: "https://images.unsplash.com/photo-1617229921708-6aa58cd0199c?auto=format&fit=crop&q=80&w=800",
+    image: "https://i.pinimg.com/736x/84/3d/40/843d40dc70a144286a0cbb82fcea8b8a.jpg",
   },
 ];
 
@@ -134,7 +134,7 @@ export default function PressPage() {
               >
                 <div className="aspect-[4/3] overflow-hidden">
                   <img 
-                    src="https://images.unsplash.com/photo-1551836022-4c4c9d3e8416?auto=format&fit=crop&q=80&w=1000" 
+                    src="https://i.pinimg.com/736x/6f/62/8d/6f628d3b69692d73fee60a6d42bbb19d.jpg" 
                     alt="MAISON Press Conference"
                     className="w-full h-full object-cover"
                   />
@@ -221,21 +221,21 @@ export default function PressPage() {
               >
                 <div className="col-span-3 aspect-[1/1.2] overflow-hidden">
                   <img 
-                    src="https://images.unsplash.com/photo-1620385019253-b051a26048ce?auto=format&fit=crop&q=80&w=500" 
+                    src="https://i.pinimg.com/736x/35/23/c9/3523c9779ec3fe12698f18ce669e806b.jpg" 
                     alt="MAISON Product Brochure"
                     className="w-full h-full object-cover"
                   />
                 </div>
                 <div className="col-span-3 aspect-[1/1.2] overflow-hidden self-end">
                   <img 
-                    src="https://images.unsplash.com/photo-1589998059171-988d887df646?auto=format&fit=crop&q=80&w=500" 
+                    src="https://i.pinimg.com/736x/3c/7b/38/3c7b383b17e0af63a003e22c73106160.jpg" 
                     alt="MAISON Logo Guidelines"
                     className="w-full h-full object-cover"
                   />
                 </div>
                 <div className="col-span-6 aspect-[16/9] overflow-hidden">
                   <img 
-                    src="https://images.unsplash.com/photo-1600490036275-35f5f1656861?auto=format&fit=crop&q=80&w=1000" 
+                    src="https://i.pinimg.com/736x/9d/81/99/9d819923ec61af6ba612c9c356a2b95c.jpg" 
                     alt="MAISON Brand Assets"
                     className="w-full h-full object-cover"
                   />

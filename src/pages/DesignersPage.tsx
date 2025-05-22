@@ -8,7 +8,7 @@ const designers = [
     name: "Elise Laurent",
     role: "Creative Director",
     bio: "Former protégé of the legendary Jean-Paul Gaultier, Elise brings her visionary approach to MAISON's design philosophy. Her signature blend of architectural forms and fluid silhouettes has redefined luxury sportswear.",
-    image: "https://images.unsplash.com/photo-1597223557154-721c1cecc4b0?auto=format&fit=crop&q=80&w=800",
+    image: "https://i.pinimg.com/736x/c0/db/cb/c0dbcbe1b971af7b7e14b9c2d730f3b0.jpg",
     specialty: "Apparel Design",
     quote: "I don't design clothes for the body; I design them for movement and performance."
   },
@@ -17,7 +17,7 @@ const designers = [
     name: "Akira Tanaka",
     role: "Technical Director",
     bio: "With an engineering background from Tokyo Institute of Technology and design experience at Yohji Yamamoto, Akira creates revolutionary technical fabrics that combine performance with sustainability.",
-    image: "https://images.unsplash.com/photo-1566492031773-4f4e44671857?auto=format&fit=crop&q=80&w=800",
+    image: "https://i.pinimg.com/736x/02/97/1f/02971f694797cae3962ba78c6ea24797.jpg",
     specialty: "Technical Fabrics",
     quote: "The future of sportswear is zero-compromise: maximum performance with minimal environmental impact."
   },

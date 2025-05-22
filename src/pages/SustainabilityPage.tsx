@@ -27,7 +27,7 @@ const initiatives = [
     description: "By 2026, 80% of our products will be made from recycled or renewable materials. We've already achieved 65% across our premium collections.",
     metric: "65%",
     metricLabel: "Materials Recycled",
-    image: "https://images.unsplash.com/photo-1586952205448-a5717505c09b?auto=format&fit=crop&q=80&w=600",
+    image: "https://i.pinimg.com/736x/5f/dd/45/5fdd45058148381113be135553e93ad0.jpg",
   },
   {
     id: 2,
@@ -35,7 +35,7 @@ const initiatives = [
     description: "Our operations are carbon neutral since 2022, with a commitment to reduce absolute emissions by 50% by 2028.",
     metric: "50%",
     metricLabel: "Emission Reduction Goal",
-    image: "https://images.unsplash.com/photo-1613119351785-b13a44d3f3a3?auto=format&fit=crop&q=80&w=600",
+    image: "https://i.pinimg.com/736x/29/10/85/291085218636bffed52b8e23deed571c.jpg",
   },
   {
     id: 3,
@@ -43,7 +43,7 @@ const initiatives = [
     description: "Our innovative dyeing process uses 95% less water than conventional methods, saving millions of gallons annually.",
     metric: "95%",
     metricLabel: "Less Water Usage",
-    image: "https://images.unsplash.com/photo-1553901753-dbc95ffd2344?auto=format&fit=crop&q=80&w=600",
+    image: "https://i.pinimg.com/736x/c9/5c/18/c95c18cb1a60bd0380b5a21a7bd029a7.jpg",
   },
   {
     id: 4,
@@ -51,7 +51,7 @@ const initiatives = [
     description: "100% of our manufacturing partners are regularly audited for fair labor practices and safe working conditions.",
     metric: "100%",
     metricLabel: "Fair Labor Compliant",
-    image: "https://images.unsplash.com/photo-1604802427103-11a13904145f?auto=format&fit=crop&q=80&w=600",
+    image: "https://i.pinimg.com/736x/b2/6b/f1/b26bf141e69d9ddf72ef378900c16c87.jpg",
   },
 ];
 
@@ -120,7 +120,7 @@ export default function SustainabilityPage() {
               >
                 <div className="aspect-[16/9] overflow-hidden">
                   <img 
-                    src="https://images.unsplash.com/photo-1531010666344-93d941596260?auto=format&fit=crop&q=80&w=1000" 
+                    src="https://i.pinimg.com/736x/fe/b5/de/feb5de9fe0c2e2720b51899a0ca196e4.jpg" 
                     alt="MAISON Sustainability"
                     className="w-full h-full object-cover"
                   />
@@ -249,28 +249,28 @@ export default function SustainabilityPage() {
               >
                 <div className="col-span-7 aspect-square overflow-hidden">
                   <img 
-                    src="https://images.unsplash.com/photo-1606388591052-f8c1c3d3df31?auto=format&fit=crop&q=80&w=600" 
+                    src="https://i.pinimg.com/736x/c7/30/a3/c730a3b1de23fe0b3f3c685d5fc4b0a9.jpg" 
                     alt="Sustainable materials"
                     className="w-full h-full object-cover"
                   />
                 </div>
                 <div className="col-span-5 aspect-square overflow-hidden">
                   <img 
-                    src="https://images.unsplash.com/photo-1602532647357-f069af9751a4?auto=format&fit=crop&q=80&w=600" 
+                    src="https://i.pinimg.com/736x/ef/59/a9/ef59a98ba475a1de8362675874c2139e.jpg" 
                     alt="Material research"
                     className="w-full h-full object-cover"
                   />
                 </div>
                 <div className="col-span-5 aspect-square overflow-hidden">
                   <img 
-                    src="https://images.unsplash.com/photo-1605546122746-16bbe139afb1?auto=format&fit=crop&q=80&w=600" 
+                    src="https://i.pinimg.com/736x/44/b2/ae/44b2aeaadc5da98c499c2dc6a0f8bac9.jpg" 
                     alt="Material testing"
                     className="w-full h-full object-cover"
                   />
                 </div>
                 <div className="col-span-7 aspect-square overflow-hidden">
                   <img 
-                    src="https://images.unsplash.com/photo-1604754742629-3e5728249d73?auto=format&fit=crop&q=80&w=600" 
+                    src="https://i.pinimg.com/736x/a3/30/5b/a3305b5920cf9d2ea6b3bb042270aa67.jpg" 
                     alt="Sustainable production"
                     className="w-full h-full object-cover"
                   />

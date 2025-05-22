@@ -10,7 +10,7 @@ export default function CareerSection() {
           <div className="lg:w-1/2">
             <div className="relative">
               <img 
-                src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&q=80&w=1024" 
+                src="https://i.pinimg.com/736x/88/f4/39/88f439c49f255dfa56656664381f55b1.jpg" 
                 alt="Fashion designer working"
                 className="w-full object-cover aspect-[4/3]"
               />

@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { Card, CardContent } from "@/components/ui/card";
+import { WishlistButton } from "@/components/WishlistButton";
 
 const sports = [
   { id: 1, name: "Tennis" },
@@ -13,7 +14,15 @@ const sports = [
   { id: 6, name: "Running" },
 ];
 
-const products = [
+type Product = {
+  id: number;
+  name: string;
+  category: string;
+  price: string;
+  image: string;
+};
+
+const products: Product[] = [
   {
     id: 1,
     name: "Elite Performance Tennis Racket",
@@ -163,13 +172,16 @@ export default function ProductsSection() {
           {visibleProducts.map((product, index) => (
             <div 
               key={product.id}
-              className={`product-card opacity-0 ${animateProducts ? 'opacity-100 transform translate-y-0' : 'transform translate-y-8'}`}
+              className={`product-card relative opacity-0 ${animateProducts ? 'opacity-100 transform translate-y-0' : 'transform translate-y-8'}`}
               style={{ 
                 transition: `all 0.5s ease-out ${index * 0.1}s` 
               }}
             >
               <Link to={`/products/${product.id}`} className="block group">
                 <Card className="border-0 overflow-hidden bg-card">
+                  <div className="absolute top-2 right-2 z-10">
+                    <WishlistButton product={product} />
+                  </div>
                   <div className="h-80 overflow-hidden">
                     <img
                       src={product.image}

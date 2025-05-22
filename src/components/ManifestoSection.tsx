@@ -10,7 +10,7 @@ export default function ManifestoSection() {
           
           <div className="relative mt-12">
             <img 
-              src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&q=80&w=1024" 
+              src="https://i.pinimg.com/736x/d5/fd/8d/d5fd8dcce2206858e05affa4d38e11a8.jpg" 
               alt="Fashion model in elegant outfit"
               className="w-full h-[60vh] object-cover object-center"
             />
