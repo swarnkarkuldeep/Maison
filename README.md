@@ -26,16 +26,6 @@ The page will reload when you make changes.
 Builds the app for production to the `dist` folder.\
 It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-#### `npm run preview`
-
-Builds the app and then serves the production build locally for preview.
-
-## Deployment
-
-To deploy this project, you can use any static site hosting service like Vercel, Netlify, or GitHub Pages.
 
 ## What technologies are used for this project?
 
@@ -50,8 +40,6 @@ This project is built with:
 # Maison Sports E-commerce
 
 A modern, responsive e-commerce platform for high-end sports equipment and apparel, built with React and TypeScript.
-
-![Maison Sports Screenshot](/public/screenshot.png)
 
 ## Features
 
@@ -121,29 +109,27 @@ src/
 ├── lib/            # Utility functions and helpers
 ├── pages/          # Page components
 └── styles/         # Global styles and Tailwind config
-```
 
-## Deployment
+## 🚀 Deploy to Netlify
 
-Deploy the `dist` folder to any static hosting service:
+[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start)
 
-- [Vercel](https://vercel.com/)
-- [Netlify](https://www.netlify.com/)
-- [GitHub Pages](https://pages.github.com/)
+### Manual Deployment
 
-### Vercel Deployment
+1. Push your code to a GitHub/GitLab repository
+2. Log in to [Netlify](https://app.netlify.com/)
+3. Click "Add new site" > "Import an existing project"
+4. Connect your Git provider and select your repository
+5. Configure the build settings (Netlify should auto-detect them):
+   - Build command: `npm run build`
+   - Publish directory: `dist`
+6. Click "Deploy site"
 
-1. Push your code to a GitHub repository
-2. Import the repository on Vercel
-3. Vercel will automatically detect the Vite project and set up the build settings
+### Environment Variables
 
-## Contributing
-
-1. Fork the project
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+If your app uses environment variables, add them in:
+1. Go to Site settings > Build & deploy > Environment
+2. Add your environment variables
 
 ## License
 
