@@ -48,6 +48,18 @@
     scroll-behavior: smooth;
   }
   
+  /* Text selection styles */
+  ::selection {
+    background: white;
+    color: black;
+  }
+  
+  /* For Firefox */
+  ::-moz-selection {
+    background: white;
+    color: black;
+  }
+  
   body {
     @apply bg-background text-foreground;
     font-feature-settings: "rlig" 1, "calt" 1;
